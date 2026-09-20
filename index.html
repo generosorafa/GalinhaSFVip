@@ -406,7 +406,7 @@ function getFeedModel(s=state){
   const foodXp = favoriteBaseXp * feedXpMultiplier;
   const expectedActions = Math.max(0, (cycleXp - loveXp) / foodXp);
   const mixedUnits = expectedActions * feedQtyMultiplier;
-  return {cycleXp, favoriteBaseXp, foodXpMultiplier, foodXp, feedQtyMultiplier, loveXp, expectedActions, mixedUnits};
+  return {cycleXp, favoriteBaseXp, foodXpMultiplier: feedXpMultiplier, foodXp, feedQtyMultiplier, loveXp, expectedActions, mixedUnits};
 }
 
 function getYieldPerSeed(s=state){
