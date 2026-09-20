@@ -54,7 +54,7 @@ button,input,select{font:inherit}.app-shell{max-width:1500px;margin:0 auto;paddi
               <strong id="heroCashProfit">—</strong>
             </div>
             <div>
-              <span class="hero-label">Economic profit / 28 dias</span>
+              <span class="hero-label">Economic profit sustentável / 28 dias</span>
               <strong id="heroEconomicProfit">—</strong>
             </div>
           </div>
@@ -114,6 +114,9 @@ button,input,select{font:inherit}.app-shell{max-width:1500px;margin:0 auto;paddi
 
             <div class="toggle-stack">
               <label class="switch-row"><span>Warehouse (+20% stock)</span><input type="checkbox" id="warehouse" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Green Thumb R1 (tempo de crops)</span><input type="checkbox" id="greenThumb" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Restless Animals R1</span><input type="checkbox" id="restless" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Flamingo Chicken</span><input type="checkbox" id="flamingo" /><span class="switch"><span></span></span></label>
               <label class="switch-row"><span>Laurie the Chuckle Crow colocado</span><input type="checkbox" id="laurieCollectible" /><span class="switch"><span></span></span></label>
               <label class="switch-row"><span>Laurie's Gains R1</span><input type="checkbox" id="laurieSkill" /><span class="switch"><span></span></span></label>
               <label class="switch-row"><span>Efficient Feeding R1</span><input type="checkbox" id="efficientFeeding" /><span class="switch"><span></span></span></label>
@@ -122,6 +125,12 @@ button,input,select{font:inherit}.app-shell{max-width:1500px;margin:0 auto;paddi
               <label class="switch-row"><span>Abundant Harvest R1</span><input type="checkbox" id="abundant" /><span class="switch"><span></span></span></label>
               <label class="switch-row"><span>Fine Fibers R1</span><input type="checkbox" id="fineFibers" /><span class="switch"><span></span></span></label>
             </div>
+            <div class="form-grid two top-gap">
+              <label>Cobertura efetiva do Laurie (%)
+                <input type="number" id="laurieCoverage" min="0" max="100" step="5" />
+              </label>
+            </div>
+            <div class="callout" id="cycleInfo">—</div>
           </div>
 
           <div class="card">
@@ -142,12 +151,13 @@ button,input,select{font:inherit}.app-shell{max-width:1500px;margin:0 auto;paddi
                 <input type="number" id="vipTaxMultiplier" step="0.05" />
               </label>
             </div>
+            <label class="switch-row"><span>Trading Shrine (-2,5 p.p. na taxa)</span><input type="checkbox" id="tradingShrine" /><span class="switch"><span></span></span></label>
           </div>
 
           <div class="card">
             <div class="card-kicker">Gems & restock</div>
             <h2>Custo operacional</h2>
-            <p class="helper">Use o pacote real que você compra. O site calcula custo por Gem e também separa Gems consumidas de caixa desembolsado.</p>
+            <p class="helper">Use uma referência real de compra de Gems (ex.: 75 Gems = 4,82 FLOWER). O site usa o custo médio por Gem e separa o desembolso real do período do custo sustentável de longo prazo.</p>
             <div class="form-grid two">
               <label>Gems do pacote
                 <input type="number" id="gemBundleQty" step="1" />
@@ -162,6 +172,8 @@ button,input,select{font:inherit}.app-shell{max-width:1500px;margin:0 auto;paddi
                 <input type="number" id="coinValuePer1000" step="0.01" />
               </label>
             </div>
+            <label class="switch-row"><span>Começar a projeção com o stock da loja cheio</span><input type="checkbox" id="includeInitialStock" /><span class="switch"><span></span></span></label>
+            <div class="callout">O modelo não conta nenhum reabastecimento gratuito de Corn/Wheat/Barley. Ele usa apenas o stock inicial disponível + restocks pagos da Betty.</div>
             <div class="divider"></div>
             <div class="card-kicker">VIP target</div>
             <div class="form-grid two">
@@ -242,11 +254,12 @@ button,input,select{font:inherit}.app-shell{max-width:1500px;margin:0 auto;paddi
                 <div class="stock-row"><span>Barley stock</span><strong id="barleyStock">—</strong></div>
                 <div class="stock-row total"><span>Gems consumidas</span><strong id="gemsUsed">—</strong></div>
                 <div class="stock-row total"><span>FLOWER alocado às Gems</span><strong id="gemAllocatedCost">—</strong></div>
-                <div class="stock-row"><span>Pacotes inteiros a comprar</span><strong id="gemBundlesToBuy">—</strong></div>
-                <div class="stock-row"><span>FLOWER de caixa p/ pacotes</span><strong id="gemCashOutlay">—</strong></div>
+                <div class="stock-row"><span>Restocks equivalentes / período</span><strong id="gemBundlesToBuy">—</strong></div>
+                <div class="stock-row"><span>FLOWER sustentável / período</span><strong id="gemCashOutlay">—</strong></div>
               </div>
             </div>
             <div class="warning" id="restockWarning">—</div>
+            <div class="split-callout" id="laurieCompare">—</div>
           </div>
 
           <div class="card">
@@ -259,14 +272,14 @@ button,input,select{font:inherit}.app-shell{max-width:1500px;margin:0 auto;paddi
                 <small>Venda líquida − FLOWER efetivamente alocado aos restocks.</small>
               </div>
               <div class="profit-card">
-                <span>Economic profit · 28 dias</span>
+                <span>Economic profit sustentável · 28 dias</span>
                 <strong id="economicProfit28">—</strong>
-                <small>Cash profit − valor econômico dos Coins informado por você.</small>
+                <small>Lucro sustentável − valor econômico dos Coins informado por você.</small>
               </div>
               <div class="profit-card">
                 <span>Margem de valor agregado</span>
                 <strong id="opportunityProfit28">—</strong>
-                <small>Compara alimentar as Chickens versus vender os crops no Desert.</small>
+                <small>Compara usar os crops nas Chickens versus vender os mesmos crops no Desert; custos de cultivo comuns aos dois caminhos se cancelam.</small>
               </div>
             </div>
           </div>
@@ -291,7 +304,7 @@ button,input,select{font:inherit}.app-shell{max-width:1500px;margin:0 auto;paddi
     </main>
 
     <footer>
-      <span>Galinha SF VIP · calculadora local, sem login.</span>
+      <span>Galinha SF VIP · v2.0 · motor auditado com o código atual do SFL.</span>
       <span>Preços manuais por enquanto · pronto para GitHub Pages.</span>
     </footer>
   </div>
@@ -305,14 +318,20 @@ const defaults = {
   cyclesPerDay: 1,
   lovesPerCycle: 2,
   warehouse: true,
+  greenThumb: true,
+  restless: true,
+  flamingo: true,
   laurieCollectible: false,
   laurieSkill: true,
+  laurieCoverage: 100,
   efficientFeeding: true,
   chonky: true,
   heartwarming: false,
   abundant: true,
   fineFibers: true,
   vip: false,
+  tradingShrine: false,
+  includeInitialStock: true,
   eggPrice: 0.0209,
   featherPrice: 0.0055,
   cornPrice: 0.0111,
@@ -358,7 +377,10 @@ function readInputs(){
     const el = $(key);
     if(!el) continue;
     if(el.type === "checkbox") state[key] = el.checked;
-    else state[key] = Number(el.value);
+    else {
+      const value = Number(el.value);
+      if (Number.isFinite(value)) state[key] = value;
+    }
   }
   state.vip = $("vipToggle").checked;
 }
@@ -374,8 +396,10 @@ function writeInputs(){
 }
 
 function getTaxRate(s=state){
-  const base = s.desertTax / 100;
-  return s.vip ? base * s.vipTaxMultiplier : base;
+  let tax = Math.max(0, s.desertTax / 100);
+  if (s.vip) tax *= s.vipTaxMultiplier;
+  if (s.tradingShrine) tax = Math.max(0, tax - 0.025);
+  return tax;
 }
 
 function getOutputPerChicken(s=state){
@@ -410,8 +434,17 @@ function getFeedModel(s=state){
 }
 
 function getYieldPerSeed(s=state){
-  // Laurie base +0.2 plus Laurie's Gains R1 +0.1, but only when the collectible is actually placed and the crop plot is inside its AOE.
-  return (s.laurieCollectible && s.laurieSkill) ? 1.3 : (s.laurieCollectible ? 1.2 : 1.0);
+  if (!s.laurieCollectible) return 1;
+  const coverage = Math.max(0, Math.min(100, s.laurieCoverage ?? 100)) / 100;
+  const fullBoost = s.laurieSkill ? 0.3 : 0.2;
+  return 1 + fullBoost * coverage;
+}
+
+function getSleepHours(s=state){
+  let hours = 24;
+  if (s.restless) hours *= 0.9;
+  if (s.flamingo) hours *= 0.975;
+  return hours;
 }
 
 function getSeedStock(s=state){
@@ -421,84 +454,124 @@ function getSeedStock(s=state){
   };
 }
 
-function calcRestocks(seedsNeeded, stock){
-  const restocksFor = x => Math.max(0, Math.ceil(seedsNeeded / x) - 1);
-  const detail = {
-    corn: restocksFor(stock.corn),
-    wheat: restocksFor(stock.wheat),
-    barley: restocksFor(stock.barley)
+function calcRestocks(seedsNeededExact, stock, includeInitialStock=true){
+  const rounded = Math.max(0, Math.ceil(seedsNeededExact));
+  const paidFor = (capacity) => {
+    const initial = includeInitialStock ? capacity : 0;
+    return Math.max(0, Math.ceil(Math.max(0, rounded - initial) / capacity));
   };
-  return {detail, paid: Math.max(detail.corn, detail.wheat, detail.barley)};
+  const equivalentFor = (capacity) => capacity > 0 ? seedsNeededExact / capacity : Infinity;
+  const detail = {
+    corn: paidFor(stock.corn),
+    wheat: paidFor(stock.wheat),
+    barley: paidFor(stock.barley)
+  };
+  const equivalent = {
+    corn: equivalentFor(stock.corn),
+    wheat: equivalentFor(stock.wheat),
+    barley: equivalentFor(stock.barley)
+  };
+  return {
+    detail,
+    equivalent,
+    paid: Math.max(detail.corn, detail.wheat, detail.barley),
+    equivalentPaid: Math.max(equivalent.corn, equivalent.wheat, equivalent.barley),
+    rounded
+  };
 }
-
 function calcScenario(s=state, days=28){
   const tax = getTaxRate(s);
   const out = getOutputPerChicken(s);
   const feed = getFeedModel(s);
-  const chickens = s.chickens;
-  const cycles = s.cyclesPerDay;
+  const chickens = Math.max(0, s.chickens);
+  const cycles = Math.max(0, s.cyclesPerDay);
 
   const eggsDay = out.egg * chickens * cycles;
   const feathersDay = out.feather * chickens * cycles;
   const grossDay = eggsDay*s.eggPrice + feathersDay*s.featherPrice;
   const netDay = grossDay * (1-tax);
+  const netRevenue = netDay * days;
+
+  // This is a long-run expected feed model. XP overflow from a feed is preserved
+  // by the game, which is why fractional average feed-actions are valid over time.
   const mixedDay = feed.mixedUnits * chickens * cycles;
   const mixedPeriod = mixedDay * days;
 
+  // Route A: buy all crop ingredients directly on the P2P.
   const p2pUnitCost = s.cornPrice+s.wheatPrice+s.barleyPrice;
   const p2pFeedCost = mixedPeriod*p2pUnitCost;
-  const p2pProfit = netDay*days - p2pFeedCost;
+  const p2pProfit = netRevenue - p2pFeedCost;
 
+  // Route B: grow the three ingredients from seed.
   const yieldPerSeed = getYieldPerSeed(s);
-  const seedsNeeded = Math.ceil(mixedPeriod / yieldPerSeed);
+  const seedsNeededExact = yieldPerSeed > 0 ? mixedPeriod / yieldPerSeed : Infinity;
+  const seedsNeeded = Math.ceil(seedsNeededExact);
   const coinCost = seedsNeeded*(7+5+10);
   const stock = getSeedStock(s);
-  const restocks = calcRestocks(seedsNeeded, stock);
+  const restocks = calcRestocks(seedsNeededExact, stock, s.includeInitialStock);
+
+  const flowerPerGem = s.gemBundleQty > 0 ? s.gemBundleFlower / s.gemBundleQty : 0;
   const gemsUsed = restocks.paid*s.restockGemCost;
-  const gemPerFlower = s.gemBundleQty / s.gemBundleFlower;
-  const flowerPerGem = gemPerFlower > 0 ? 1/gemPerFlower : 0;
   const gemAllocatedCost = gemsUsed*flowerPerGem;
-  const bundlesToBuy = s.gemBundleQty > 0 ? Math.ceil(gemsUsed/s.gemBundleQty) : 0;
-  const gemCashOutlay = bundlesToBuy*s.gemBundleFlower;
 
-  const cashProfit = netDay*days - gemAllocatedCost;
+  // Sustainable cost amortises the consumed restock capacity. It does NOT grant
+  // a free full stock again every 28 days.
+  const equivalentGems = restocks.equivalentPaid*s.restockGemCost;
+  const sustainableGemCost = equivalentGems*flowerPerGem;
+
+  const cashProfit = netRevenue - gemAllocatedCost;
+  const sustainableCashProfit = netRevenue - sustainableGemCost;
   const coinEconomicCost = coinCost/1000*s.coinValuePer1000;
-  const economicProfit = cashProfit - coinEconomicCost;
+  const economicProfit = sustainableCashProfit - coinEconomicCost;
 
+  // Feed-vs-sell comparison. Seed/Gem/coin growing costs are common to both
+  // choices, so they cancel here.
   const cropOpportunityNet = mixedPeriod*p2pUnitCost*(1-tax);
-  const opportunityProfit = netDay*days - gemAllocatedCost - cropOpportunityNet;
+  const opportunityProfit = netRevenue - cropOpportunityNet;
 
-  // Plot-hours: Corn 20h + Wheat 24h + Barley 48h, Green Thumb R1 assumed in profile = x0.95.
-  // Laurie affects yield, not base time in this simplified first version.
-  const totalPlotHoursPerSeedSet = (20+24+48)*0.95;
-  const seedSetsPerDay = (mixedDay / yieldPerSeed);
+  const growthMultiplier = s.greenThumb ? 0.95 : 1;
+  const totalPlotHoursPerSeedSet = (20+24+48)*growthMultiplier;
+  const seedSetsPerDay = yieldPerSeed > 0 ? mixedDay/yieldPerSeed : Infinity;
   const plotEquivalents = seedSetsPerDay*totalPlotHoursPerSeedSet/24;
 
-  return {tax,out,feed,eggsDay,feathersDay,grossDay,netDay,mixedDay,mixedPeriod,p2pUnitCost,p2pFeedCost,p2pProfit,yieldPerSeed,seedsNeeded,coinCost,stock,restocks,gemsUsed,flowerPerGem,gemAllocatedCost,bundlesToBuy,gemCashOutlay,cashProfit,coinEconomicCost,economicProfit,cropOpportunityNet,opportunityProfit,plotEquivalents,days};
+  return {
+    tax,out,feed,eggsDay,feathersDay,grossDay,netDay,netRevenue,
+    mixedDay,mixedPeriod,p2pUnitCost,p2pFeedCost,p2pProfit,
+    yieldPerSeed,seedsNeededExact,seedsNeeded,coinCost,stock,restocks,
+    gemsUsed,flowerPerGem,gemAllocatedCost,equivalentGems,sustainableGemCost,
+    cashProfit,sustainableCashProfit,coinEconomicCost,economicProfit,
+    cropOpportunityNet,opportunityProfit,plotEquivalents,days
+  };
 }
 
+function findVipDays(s=state, maxDays=3650){
+  if (!(s.vipFlowerGoal > 0)) return 0;
+  for(let days=1; days<=maxDays; days++){
+    const r=calcScenario(s,days);
+    if(r.cashProfit >= s.vipFlowerGoal) return days;
+  }
+  return Infinity;
+}
 function renderMiniGrid(el, items){
   el.innerHTML = items.map(([label,value,cls=""])=>`<div><span>${label}</span><strong class="${cls}">${value}</strong></div>`).join("");
 }
 
 function render(){
   const r28 = calcScenario(state,28);
-  const r7 = calcScenario(state,7);
   const r93 = calcScenario(state,93);
-  const out = r28.out;
 
   $("heroCashProfit").textContent = fmtFlower(r28.cashProfit,2);
   $("heroCashProfit").className = signClass(r28.cashProfit);
   $("heroEconomicProfit").textContent = fmtFlower(r28.economicProfit,2);
   $("heroEconomicProfit").className = signClass(r28.economicProfit);
   renderMiniGrid($("heroMiniGrid"),[
-    ["Receita líquida / 28d",fmtFlower(r28.netDay*28,2)],
+    ["Receita líquida / 28d",fmtFlower(r28.netRevenue,2)],
     ["Mixed Grain / dia",fmt(r28.mixedDay,2)],
-    ["Restocks mínimos / 28d",fmtInt(r28.restocks.paid)],
-    ["Coins / 28d",fmtInt(r28.coinCost)]
+    ["Restocks reais / 28d",fmtInt(r28.restocks.paid)],
+    ["Lucro sustentável / 28d",fmtFlower(r28.sustainableCashProfit,2),signClass(r28.sustainableCashProfit)]
   ]);
 
-  $("taxChip").textContent = `Desert · ${fmt(r28.tax*100,1)}%${state.vip?" · VIP":""}`;
+  $("taxChip").textContent = "Desert · "+fmt(r28.tax*100,1)+"%"+(state.vip?" · VIP":"")+(state.tradingShrine?" · Shrine":"");
   $("eggsDay").textContent = fmt(r28.eggsDay,1);
   $("feathersDay").textContent = fmt(r28.feathersDay,1);
   $("grossDay").textContent = fmtFlower(r28.grossDay,3);
@@ -507,22 +580,23 @@ function render(){
   const periods=[1,7,28,93];
   $("productionTable").innerHTML = periods.map(days=>{
     const r=calcScenario(state,days);
-    return `<tr><td>${days} ${days===1?"dia":"dias"}</td><td>${fmt(r.eggsDay*days,1)}</td><td>${fmt(r.feathersDay*days,1)}</td><td>${fmt(r.grossDay*days,3)}</td><td>${fmt(r.netDay*days,3)}</td></tr>`;
+    return "<tr><td>"+days+" "+(days===1?"dia":"dias")+"</td><td>"+fmt(r.eggsDay*days,1)+"</td><td>"+fmt(r.feathersDay*days,1)+"</td><td>"+fmt(r.grossDay*days,3)+"</td><td>"+fmt(r.netDay*days,3)+"</td></tr>";
   }).join("");
 
   $("p2pProfit").textContent = fmtFlower(r28.p2pProfit,2);
-  $("p2pProfit").className = `route-profit ${signClass(r28.p2pProfit)}`;
-  $("p2pSubtitle").textContent = `Lucro após comprar todo Corn + Wheat + Barley no P2P por 28 dias.`;
+  $("p2pProfit").className = "route-profit "+signClass(r28.p2pProfit);
+  $("p2pSubtitle").textContent = "Lucro após comprar todo Corn + Wheat + Barley no P2P por 28 dias.";
   renderMiniGrid($("p2pStats"),[
     ["Custo do feed",fmtFlower(r28.p2pFeedCost,2)],
     ["Custo / Mixed Grain",fmtFlower(r28.p2pUnitCost,4)]
   ]);
 
   $("seedProfit").textContent = fmtFlower(r28.cashProfit,2);
-  $("seedProfit").className = `route-profit ${signClass(r28.cashProfit)}`;
-  $("seedSubtitle").textContent = `FLOWER cash profit usando Seeds + Coins + restock Betty.`;
+  $("seedProfit").className = "route-profit "+signClass(r28.cashProfit);
+  $("seedSubtitle").textContent = "Cash profit real do período: venda líquida − restocks pagos que efetivamente precisam acontecer.";
   renderMiniGrid($("seedStats"),[
-    ["Restock FLOWER alocado",fmtFlower(r28.gemAllocatedCost,2)],
+    ["Restock real",fmtFlower(r28.gemAllocatedCost,2)],
+    ["Restock sustentável",fmtFlower(r28.sustainableGemCost,2)],
     ["Coins gastos",fmtInt(r28.coinCost)]
   ]);
 
@@ -531,31 +605,42 @@ function render(){
   $("mixedPerChicken").textContent = fmt(r28.feed.mixedUnits,3);
   $("mixedPerDay").textContent = fmt(r28.mixedDay,2);
 
-  const altState={...state,heartwarming:!state.heartwarming};
-  const alt=calcScenario(altState,28);
-  const diffMixed = alt.mixedPeriod-r28.mixedPeriod;
-  const diffCash = alt.cashProfit-r28.cashProfit;
+  const altHeart=calcScenario({...state,heartwarming:!state.heartwarming},28);
+  const heartDelta=altHeart.sustainableCashProfit-r28.sustainableCashProfit;
   $("heartwarmingCompare").innerHTML = state.heartwarming
-    ? `Sem Heartwarming, o consumo projetado iria para <strong>${fmt(alt.mixedDay,2)} Mixed Grain/dia</strong> e o cash profit mudaria em <strong class="${signClass(diffCash)}">${fmtFlower(diffCash,2)}</strong> por 28 dias.`
-    : `Com Heartwarming R1, o consumo projetado cai para <strong>${fmt(alt.mixedDay,2)} Mixed Grain/dia</strong> (${fmt(Math.abs(diffMixed),1)} a menos em 28 dias) e o cash profit muda em <strong class="${signClass(diffCash)}">+${fmtFlower(diffCash,2)}</strong>.`;
+    ? "Sem Heartwarming, o consumo iria para <strong>"+fmt(altHeart.mixedDay,2)+" Mixed/dia</strong> e o lucro sustentável mudaria em <strong class='"+signClass(heartDelta)+"'>"+fmtFlower(heartDelta,2)+"</strong> / 28d."
+    : "Com Heartwarming R1, o consumo cai para <strong>"+fmt(altHeart.mixedDay,2)+" Mixed/dia</strong> e o lucro sustentável melhora em <strong class='"+signClass(heartDelta)+"'>+"+fmtFlower(heartDelta,2)+"</strong> / 28d.";
 
-  $("yieldPerSeed").textContent = fmt(r28.yieldPerSeed,2);
-  $("seedsNeeded").textContent = `${fmtInt(r28.seedsNeeded)} de cada`;
-  $("seedCoins").textContent = `${fmtInt(r28.coinCost)} Coins`;
+  $("yieldPerSeed").textContent = fmt(r28.yieldPerSeed,3);
+  $("seedsNeeded").textContent = fmtInt(r28.seedsNeeded)+" de cada";
+  $("seedCoins").textContent = fmtInt(r28.coinCost)+" Coins";
   $("paidRestocks").textContent = fmtInt(r28.restocks.paid);
   $("cornStock").textContent = fmtInt(r28.stock.corn);
   $("wheatStock").textContent = fmtInt(r28.stock.wheat);
   $("barleyStock").textContent = fmtInt(r28.stock.barley);
-  $("gemsUsed").textContent = `${fmtInt(r28.gemsUsed)} Gems`;
+  $("gemsUsed").textContent = fmtInt(r28.gemsUsed)+" Gems";
   $("gemAllocatedCost").textContent = fmtFlower(r28.gemAllocatedCost,3);
-  $("gemBundlesToBuy").textContent = fmtInt(r28.bundlesToBuy);
-  $("gemCashOutlay").textContent = fmtFlower(r28.gemCashOutlay,2);
+  $("gemBundlesToBuy").textContent = fmt(r28.restocks.equivalentPaid,2);
+  $("gemCashOutlay").textContent = fmtFlower(r28.sustainableGemCost,3);
 
-  const barleyCapacity=(r28.restocks.paid+1)*r28.stock.barley*r28.yieldPerSeed;
-  const buffer=barleyCapacity-r28.mixedPeriod;
-  $("restockWarning").innerHTML = buffer>=0
-    ? `Com o stock inicial + ${r28.restocks.paid} restock(s), a capacidade teórica de Barley cobre <strong>${fmt(barleyCapacity,1)} Mixed Grain</strong>. Margem aproximada: <strong>${fmt(buffer,1)}</strong>. Lembre: restock restaura até o limite; não “soma” stock acima do máximo.`
-    : `Atenção: faltariam aproximadamente <strong>${fmt(Math.abs(buffer),1)}</strong> Mixed Grain de capacidade. Você precisaria de mais restock ou complementar no P2P.`;
+  const initialBarley = state.includeInitialStock ? r28.stock.barley : 0;
+  const barleySeedCapacity = initialBarley + r28.restocks.paid*r28.stock.barley;
+  const barleyCropCapacity = barleySeedCapacity*r28.yieldPerSeed;
+  const buffer = barleyCropCapacity-r28.mixedPeriod;
+  $("restockWarning").innerHTML =
+    "Restock é <strong>degrau</strong>, não custo contínuo. Por isso uma melhora de yield pode reduzir Coins e plots sem mudar o cash profit até cruzar o próximo limite de restock. "
+    +(buffer>=0
+      ? "Neste período a capacidade de Barley cobre <strong>"+fmt(barleyCropCapacity,1)+" Mixed</strong>, com margem de <strong>"+fmt(buffer,1)+"</strong>."
+      : "Faltariam <strong>"+fmt(Math.abs(buffer),1)+" Mixed</strong> de capacidade.");
+
+  const compareLaurieState={...state,laurieCollectible:!state.laurieCollectible};
+  const altLaurie=calcScenario(compareLaurieState,28);
+  const laurieDelta=altLaurie.sustainableCashProfit-r28.sustainableCashProfit;
+  const coinDelta=altLaurie.coinCost-r28.coinCost;
+  const plotDelta=altLaurie.plotEquivalents-r28.plotEquivalents;
+  $("laurieCompare").innerHTML = state.laurieCollectible
+    ? "<strong>Impacto do Laurie agora:</strong> desligar levaria o yield para "+fmt(altLaurie.yieldPerSeed,3)+", mudaria o lucro sustentável em <strong class='"+signClass(laurieDelta)+"'>"+fmtFlower(laurieDelta,2)+"</strong>, Coins em "+fmtInt(coinDelta)+" e plots-equivalentes em "+fmt(plotDelta,1)+" por 28 dias."
+    : "<strong>Simulação do Laurie:</strong> ligar com "+fmt(state.laurieCoverage,0)+"% de cobertura levaria o yield para "+fmt(altLaurie.yieldPerSeed,3)+", mudaria o lucro sustentável em <strong class='"+signClass(laurieDelta)+"'>+"+fmtFlower(laurieDelta,2)+"</strong>, economizaria "+fmtInt(Math.abs(coinDelta))+" Coins e "+fmt(Math.abs(plotDelta),1)+" plots-equivalentes por 28 dias.";
 
   $("cashProfit28").textContent = fmtFlower(r28.cashProfit,2);
   $("cashProfit28").className = signClass(r28.cashProfit);
@@ -568,31 +653,39 @@ function render(){
   const diffPlots=state.plotsAvailable-r28.plotEquivalents;
   $("plotStatus").textContent = diffPlots>=0 ? "Capacidade sustentável" : "Capacidade insuficiente";
   $("plotStatus").className = diffPlots>=0 ? "positive" : "negative";
-  $("plotDetail").textContent = diffPlots>=0 ? `Sobra equivalente a ${fmt(diffPlots,1)} plots contínuos.` : `Faltam aproximadamente ${fmt(Math.abs(diffPlots),1)} plots-equivalentes contínuos.`;
+  $("plotDetail").textContent = diffPlots>=0
+    ? "Sobra equivalente a "+fmt(diffPlots,1)+" plots contínuos."
+    : "Faltam aproximadamente "+fmt(Math.abs(diffPlots),1)+" plots-equivalentes contínuos.";
 
-  const dailyCash = Math.max(0, r28.cashProfit/28);
-  const daysToVip = dailyCash>0 ? state.vipFlowerGoal/dailyCash : Infinity;
-  $("vipGoalText").textContent = `${fmtInt(state.vipGemGoal)} Gems = ${fmtFlower(state.vipFlowerGoal,2)}`;
-  $("vipDays").textContent = Number.isFinite(daysToVip) ? `~${Math.ceil(daysToVip)} dias` : "sem payback";
-  const progress=Math.max(0,Math.min(100,(r28.cashProfit/state.vipFlowerGoal)*100));
-  $("vipProgressBar").style.width=`${progress}%`;
-  $("vipProjection").textContent = `${fmt(progress,1)}% da meta gerados a cada 28 dias neste cenário.`;
+  const sleepHours=getSleepHours(state);
+  const theoreticalCycles=24/sleepHours;
+  const cycleClass=state.cyclesPerDay<=theoreticalCycles+1e-9?"positive":"negative";
+  $("cycleInfo").innerHTML =
+    "<strong>Ritmo:</strong> sono estimado de <strong>"+fmt(sleepHours,2)+"h</strong> · máximo teórico <strong>"+fmt(theoreticalCycles,3)+" ciclos/dia</strong> · cálculo usando <strong class='"+cycleClass+"'>"+fmt(state.cyclesPerDay,2)+" ciclo(s)/dia</strong>. "
+    +(state.cyclesPerDay<=1 && theoreticalCycles>1.01 ? "Com 1 coleta/dia, Restless/Flamingo melhoram horário e folga, mas não criam receita extra." : "");
+
+  const daysToVip=findVipDays(state);
+  $("vipGoalText").textContent = fmtInt(state.vipGemGoal)+" Gems = "+fmtFlower(state.vipFlowerGoal,2);
+  $("vipDays").textContent = Number.isFinite(daysToVip) ? "~"+daysToVip+" dias" : "sem payback";
+  const progress=Math.max(0,Math.min(100,(r28.sustainableCashProfit/state.vipFlowerGoal)*100));
+  $("vipProgressBar").style.width=progress+"%";
+  $("vipProjection").textContent = fmt(progress,1)+"% da meta por 28 dias no ritmo sustentável (sem reutilizar stock inicial grátis todo mês).";
   $("vipCallout").innerHTML = Number.isFinite(daysToVip)
-    ? `Em 93 dias, o galinheiro projeta <strong>${fmtFlower(r93.cashProfit,2)}</strong> de cash profit. Meta atual do VIP: <strong>${fmtFlower(state.vipFlowerGoal,2)}</strong>.`
-    : `Com os preços e custos atuais, a operação não gera cash profit positivo suficiente para financiar o VIP.`;
+    ? "Em 93 dias, partindo do stock inicial configurado uma única vez, o caixa projetado é <strong>"+fmtFlower(r93.cashProfit,2)+"</strong>. Meta VIP: <strong>"+fmtFlower(state.vipFlowerGoal,2)+"</strong>."
+    : "Com estes preços e custos, o galinheiro não alcança a meta de VIP dentro da janela simulada.";
 
-  $("formulaText").innerHTML = `
-    <p><strong>Produção:</strong> usa o drop do nível informado, somando +0,2 Egg com Abundant Harvest R1 e +0,1 Feather com Fine Fibers R1.</p>
-    <p><strong>Taxa:</strong> receita líquida = receita bruta × (1 − taxa). Com VIP ligado, a taxa Desert é multiplicada por <code>${state.vipTaxMultiplier}</code>.</p>
-    <p><strong>Chicken Lv15:</strong> ciclo de XP = 2720 − 2400 = <code>320 XP</code>. Mixed Grain favorito = <code>80 XP</code>; com Chonky R1 = <code>160 XP</code>.</p>
-    <p><strong>Carinho Lv15:</strong> valor esperado por carinho = <code>45,5 XP</code>. Heartwarming R1 multiplica esse XP por <code>1,5×</code>.</p>
-    <p><strong>Quantidade de feed:</strong> base 1 × Efficient Feeding (${state.efficientFeeding?"0,95":"1,00"}) × Chonky (${state.chonky?"1,50":"1,00"}).</p>
-    <p><strong>Seeds:</strong> yield usado = <code>${fmt(r28.yieldPerSeed,2)}</code>. Laurie só entra se o collectible estiver colocado; Laurie's Gains R1 eleva o bônus total de +0,2 para +0,3 dentro do AOE. Com Warehouse, stock = 120 Corn / 96 Wheat / 72 Barley. Betty restock custa ${fmtInt(state.restockGemCost)} Gems e restaura o stock até o limite.</p>
-    <p><strong>Cash profit:</strong> venda líquida − custo FLOWER alocado às Gems consumidas. <strong>Economic profit:</strong> cash profit − valor dos Coins segundo o campo “Coin value / 1.000 Coins”.</p>
-    <p><strong>Plots:</strong> aproximação usando 20h Corn + 24h Wheat + 48h Barley e Green Thumb R1 (×0,95), dividido pelo yield por seed.</p>
-  `;
+  $("formulaText").innerHTML =
+    "<p><strong>Produção:</strong> Chicken Lv15 = 5 Egg + 3 Feather. Abundant Harvest R1 soma +0,2 Egg e Fine Fibers R1 soma +0,1 Feather.</p>"+
+    "<p><strong>Taxa:</strong> Desert = 25%. VIP multiplica a taxa por 0,5. Trading Shrine subtrai 2,5 pontos percentuais depois do VIP, exatamente como no código atual.</p>"+
+    "<p><strong>Feed Lv15:</strong> ciclo = 320 XP. Mixed Grain favorito = 80 XP; Chonky R1 = 160 XP. Efficient Feeding R1 ×0,95 e Chonky R1 ×1,5 na quantidade. O valor fracionário de feed-actions é uma <em>média de longo prazo</em>; o jogo cobra cada clique inteiro, mas o XP excedente do feed é preservado entre ciclos.</p>"+
+    "<p><strong>Carinho:</strong> no Lv15, pesos 1/2/7 para Petting Hand/Brush/Music Box => 45,5 XP esperados por carinho. Heartwarming R1 multiplica por 1,5.</p>"+
+    "<p><strong>Laurie:</strong> +0,2 em advanced crops dentro do AOE; com Laurie's Gains R1, total +0,3. O campo de cobertura evita assumir que todos os seus plots estão dentro do AOE.</p>"+
+    "<p><strong>Seeds:</strong> base 100 Corn / 80 Wheat / 60 Barley; Warehouse pronto multiplica por 1,2 e arredonda para cima => 120 / 96 / 72. Betty custa 15 Gems e restaura a loja até o máximo; não soma acima do limite.</p>"+
+    "<p><strong>Cash profit:</strong> receita líquida − restocks inteiros realmente necessários no horizonte. <strong>Lucro sustentável:</strong> amortiza a capacidade de restock consumida e evita dar um stock inicial grátis a cada novo mês.</p>"+
+    "<p><strong>Economic profit:</strong> lucro sustentável − valor dos Coins que você informar. <strong>Valor agregado:</strong> Chicken revenue líquida − o que os mesmos crops renderiam líquidos se fossem vendidos; custos de cultivo comuns aos dois caminhos se cancelam.</p>"+
+    "<p><strong>Plots:</strong> Corn 20h + Wheat 24h + Barley 48h. Green Thumb R1 aplica ×0,95 quando ligado. Laurie muda yield, não tempo.</p>"+
+    "<p><strong>Auditoria:</strong> regras revisadas contra o código atual do Sunflower Land em 20/09/2026.</p>";
 }
-
 function bind(){
   document.querySelectorAll("input,select").forEach(el=>{
     el.addEventListener("input",()=>{readInputs();render();});
