@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10131a" />
+  <title>Galinha SF VIP</title>
+  <style>
+:root{
+  --bg:#0b0e13; --panel:#121720; --panel2:#161d28; --line:#263140; --text:#eef2f7; --muted:#91a0b4;
+  --accent:#f6b94c; --accent2:#ffd986; --green:#66d59a; --red:#ff7a7a; --blue:#73a7ff; --shadow:0 18px 55px rgba(0,0,0,.28);
+  --radius:20px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at top left,#151b26 0,#0b0e13 38%,#080a0f 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,input,select{font:inherit}.app-shell{max-width:1500px;margin:0 auto;padding:26px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:24px}.brand-wrap{display:flex;gap:16px;align-items:center}.brand-mark{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:#1d1406;background:linear-gradient(145deg,var(--accent2),var(--accent));box-shadow:0 10px 40px rgba(246,185,76,.2)}.brand-mark svg{width:42px;height:42px}.eyebrow,.card-kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);font-weight:800}.topbar h1{margin:4px 0 3px;font-size:31px;line-height:1}.topbar p{margin:0;color:var(--muted);font-size:14px}.header-actions{display:flex;gap:10px}.btn{border:none;border-radius:12px;padding:11px 14px;font-weight:750;cursor:pointer;transition:.18s ease}.btn.primary{background:var(--accent);color:#171107}.btn.ghost{background:#171d27;color:var(--text);border:1px solid var(--line)}.btn:hover{transform:translateY(-1px);filter:brightness(1.05)}.btn.small{padding:8px 11px;font-size:12px}
+.card{background:linear-gradient(180deg,rgba(19,25,35,.96),rgba(15,20,28,.96));border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}.card.highlighted{border-color:rgba(246,185,76,.44);background:linear-gradient(180deg,rgba(33,28,19,.92),rgba(18,20,27,.96))}.card h2{margin:5px 0 14px;font-size:19px}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.card-head.compact h2{margin-bottom:5px}.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:18px;margin-bottom:18px}.hero-card,.vip-card{min-height:235px}.hero-value-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:18px 0}.hero-label{display:block;color:var(--muted);font-size:13px;margin-bottom:7px}.hero-value-row strong{font-size:34px}.mini-grid{display:grid;gap:10px}.mini-grid.four{grid-template-columns:repeat(4,1fr)}.mini-grid.two{grid-template-columns:repeat(2,1fr);margin-top:16px}.mini-grid>div{background:#0d1219;border:1px solid #202a37;border-radius:13px;padding:12px}.mini-grid span{display:block;color:var(--muted);font-size:11px}.mini-grid strong{display:block;margin-top:4px;font-size:16px}.dashboard-grid{display:grid;grid-template-columns:360px 1fr;gap:18px}.settings-column,.results-column{display:flex;flex-direction:column;gap:18px}.form-grid{display:grid;gap:12px}.form-grid.two{grid-template-columns:1fr 1fr}.form-grid label,.price-grid label,.inline-field{display:flex;flex-direction:column;gap:7px;font-size:12px;color:#bac5d4;font-weight:650}.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.price-grid label:last-child{grid-column:1/-1}.price-grid label span{font-size:10px;color:#6f7d91;margin-left:4px}input,select{width:100%;border-radius:11px;border:1px solid #2b3747;background:#0c1118;color:var(--text);padding:10px 11px;outline:none;transition:.15s ease}input:focus,select:focus{border-color:#5a708d;box-shadow:0 0 0 3px rgba(115,167,255,.08)}.top-gap{margin-top:12px}.toggle-stack{display:flex;flex-direction:column;margin-top:14px}.switch-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid rgba(38,49,64,.65);color:#c9d2de;font-size:13px}.switch-row:first-child{border-top:none}.switch-row input{display:none}.switch{width:42px;height:24px;border-radius:99px;background:#2a3442;padding:3px;transition:.2s ease;flex:0 0 auto}.switch span{display:block;width:18px;height:18px;border-radius:50%;background:#c7cfda;transition:.2s ease}.switch-row input:checked + .switch{background:#b47d20}.switch-row input:checked + .switch span{transform:translateX(18px);background:#fff3cf}.switch-row.small{padding:0;border:0;font-size:12px}.preset-pills{display:flex;gap:6px}.pill{border:1px solid var(--line);background:#0e131a;color:#aab6c5;border-radius:999px;padding:7px 9px;font-size:11px;cursor:pointer}.pill.active{background:#302719;color:#ffd987;border-color:#705524}.helper{font-size:12px;color:var(--muted);line-height:1.45}.divider{height:1px;background:var(--line);margin:17px 0}.status-chip{font-size:11px;border:1px solid #344459;background:#101722;border-radius:999px;padding:7px 10px;color:#c7d5e7}
+.metric-grid{display:grid;gap:10px}.metric-grid.four{grid-template-columns:repeat(4,1fr)}.metric{background:#0d1219;border:1px solid #222d3a;border-radius:14px;padding:14px}.metric span{display:block;color:var(--muted);font-size:11px}.metric strong{display:block;margin-top:7px;font-size:22px}.metric.accent{border-color:rgba(246,185,76,.38);background:#18160f}.metric.accent strong{color:#ffd986}.table-wrap{overflow:auto;margin-top:14px;border:1px solid #222c38;border-radius:14px}table{width:100%;border-collapse:collapse;min-width:650px}th,td{padding:12px 13px;text-align:right;border-bottom:1px solid #202936;font-size:12px}th:first-child,td:first-child{text-align:left}th{color:#8e9cb0;font-weight:700;background:#0d1219}tbody tr:last-child td{border-bottom:none}.comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.route-profit{font-size:34px;font-weight:850;margin:18px 0 2px}.route-sub{color:var(--muted);font-size:12px}.split-callout{margin-top:15px;border-radius:14px;padding:14px 15px;background:#0d1219;border:1px solid #223044;font-size:13px;line-height:1.5}.restock-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}.metric-stack{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric-stack>div{background:#0d1219;border:1px solid #222d3a;padding:14px;border-radius:14px}.metric-stack span{display:block;color:var(--muted);font-size:11px}.metric-stack strong{display:block;font-size:20px;margin-top:6px}.stock-panel{background:#0d1219;border:1px solid #222d3a;border-radius:14px;padding:8px 14px}.stock-row{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid #202936;font-size:12px}.stock-row:last-child{border-bottom:none}.stock-row span{color:#93a2b5}.stock-row.total strong{color:#ffd986}.warning,.callout{margin-top:14px;border-radius:13px;padding:12px 13px;font-size:12px;line-height:1.45}.warning{background:rgba(246,185,76,.08);border:1px solid rgba(246,185,76,.24);color:#ecd7aa}.callout{background:#0e141c;border:1px solid #263547;color:#bbc8d8}.profit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.profit-card{border:1px solid #283546;background:#0d1219;border-radius:15px;padding:15px}.profit-card.good{border-color:rgba(102,213,154,.3);background:rgba(31,74,53,.16)}.profit-card span{font-size:11px;color:#9cabbd}.profit-card strong{font-size:27px;display:block;margin:8px 0}.profit-card small{font-size:11px;color:#7f8da0;line-height:1.4;display:block}.inline-field{max-width:160px}.plot-visual{display:flex;align-items:center;gap:18px;padding:16px;border-radius:15px;background:#0d1219;border:1px solid #223044}.plot-number{font-size:42px;font-weight:900;color:#ffd986;min-width:120px}.plot-copy{display:flex;flex-direction:column;gap:5px}.plot-copy span{font-size:12px;color:var(--muted)}.formulas-card summary{cursor:pointer;font-weight:750}.formula-text{color:#aeb9c8;font-size:12px;line-height:1.65;margin-top:14px}.formula-text code{color:#ffd986;background:#0a0f15;padding:2px 5px;border-radius:6px}.vip-progress-wrap{margin-top:23px}.vip-topline{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:12px}.vip-topline strong{font-size:16px}.progress{height:12px;border-radius:999px;background:#0b1016;margin:10px 0;overflow:hidden;border:1px solid #283444}.progress span{display:block;height:100%;background:linear-gradient(90deg,#d5952c,#ffd986);width:0%;transition:.3s ease}.muted{color:var(--muted);font-size:12px}.negative{color:var(--red)!important}.positive{color:var(--green)!important}footer{display:flex;justify-content:space-between;gap:15px;color:#657286;font-size:11px;padding:24px 4px 10px}
+@media(max-width:1120px){.dashboard-grid{grid-template-columns:1fr}.settings-column{display:grid;grid-template-columns:repeat(3,1fr);align-items:start}.hero-grid{grid-template-columns:1fr}.restock-layout{grid-template-columns:1fr}.comparison-grid{grid-template-columns:1fr}}
+@media(max-width:800px){.app-shell{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.header-actions{width:100%}.header-actions .btn{flex:1}.settings-column{display:flex}.metric-grid.four,.mini-grid.four,.profit-grid{grid-template-columns:1fr 1fr}.hero-value-row{grid-template-columns:1fr}.form-grid.two,.price-grid,.metric-stack{grid-template-columns:1fr}.price-grid label:last-child{grid-column:auto}.card{padding:16px}.topbar h1{font-size:27px}.brand-mark{width:54px;height:54px}.hero-value-row strong{font-size:29px}.plot-visual{align-items:flex-start;flex-direction:column}.comparison-grid{grid-template-columns:1fr}.restock-layout{grid-template-columns:1fr}}
+@media(max-width:520px){.metric-grid.four,.mini-grid.four,.profit-grid{grid-template-columns:1fr}.card-head{flex-direction:column}.preset-pills{width:100%}.pill{flex:1}.route-profit{font-size:29px}footer{flex-direction:column}}
+
+</style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img">
+            <path d="M18 34c0-11 8-20 19-20 7 0 13 3 17 9-4-1-7 0-10 2 3 1 5 3 7 6-4-1-7 0-10 2 1 6-3 12-10 13-7 1-13-4-13-12Z" fill="currentColor" opacity=".95"/>
+            <circle cx="41" cy="22" r="2" fill="#10131a"/>
+            <path d="M10 37h12l-5 9h-8l1-9Zm14 9h7l-1 7h-6v-7Z" fill="currentColor" opacity=".72"/>
+          </svg>
+        </div>
+        <div>
+          <div class="eyebrow">SUNFLOWER LAND · CHICKEN ECONOMY</div>
+          <h1>Galinha SF VIP</h1>
+          <p>Quanto seu galinheiro realmente gera — já descontando taxa, ração, restock, Gems e Coins.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn ghost" id="resetBtn">Restaurar meu perfil</button>
+        <button class="btn primary" id="saveBtn">Salvar no navegador</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-grid">
+        <div class="card hero-card">
+          <div class="card-kicker">Resumo do cenário</div>
+          <div class="hero-value-row">
+            <div>
+              <span class="hero-label">FLOWER cash profit / 28 dias</span>
+              <strong id="heroCashProfit">—</strong>
+            </div>
+            <div>
+              <span class="hero-label">Economic profit / 28 dias</span>
+              <strong id="heroEconomicProfit">—</strong>
+            </div>
+          </div>
+          <div class="mini-grid four" id="heroMiniGrid"></div>
+        </div>
+
+        <div class="card vip-card">
+          <div class="card-head compact">
+            <div>
+              <div class="card-kicker">Meta VIP</div>
+              <h2>3 meses de VIP</h2>
+            </div>
+            <label class="switch-row small">
+              <span>Estou com VIP agora</span>
+              <input type="checkbox" id="vipToggle" />
+              <span class="switch"><span></span></span>
+            </label>
+          </div>
+          <div class="vip-progress-wrap">
+            <div class="vip-topline"><span id="vipGoalText">1.500 Gems = 72,39 FLOWER</span><strong id="vipDays">—</strong></div>
+            <div class="progress"><span id="vipProgressBar"></span></div>
+            <div class="muted" id="vipProjection">—</div>
+          </div>
+          <div class="callout" id="vipCallout">—</div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <aside class="settings-column">
+          <div class="card">
+            <div class="card-head">
+              <div><div class="card-kicker">Perfil</div><h2>Meu galinheiro</h2></div>
+              <div class="preset-pills">
+                <button class="pill" data-preset="actual">Atual · 5</button>
+                <button class="pill active" data-preset="target">Meta · 10</button>
+              </div>
+            </div>
+
+            <div class="form-grid two">
+              <label>Galinhas
+                <input type="number" id="chickens" min="1" max="30" step="1" />
+              </label>
+              <label>Nível das galinhas
+                <input type="number" id="chickenLevel" min="15" max="15" step="1" disabled title="A v1 está calibrada para a economia recorrente de Chickens no Level 15." />
+              </label>
+              <label>Ciclos por dia
+                <input type="number" id="cyclesPerDay" min="0.1" max="3" step="0.05" />
+              </label>
+              <label>Carinhos por ciclo
+                <select id="lovesPerCycle">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="toggle-stack">
+              <label class="switch-row"><span>Warehouse (+20% stock)</span><input type="checkbox" id="warehouse" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Laurie the Chuckle Crow colocado</span><input type="checkbox" id="laurieCollectible" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Laurie's Gains R1</span><input type="checkbox" id="laurieSkill" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Efficient Feeding R1</span><input type="checkbox" id="efficientFeeding" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Chonky Feed R1</span><input type="checkbox" id="chonky" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Heartwarming Instruments R1</span><input type="checkbox" id="heartwarming" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Abundant Harvest R1</span><input type="checkbox" id="abundant" /><span class="switch"><span></span></span></label>
+              <label class="switch-row"><span>Fine Fibers R1</span><input type="checkbox" id="fineFibers" /><span class="switch"><span></span></span></label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-kicker">Marketplace</div>
+            <h2>Preços P2P</h2>
+            <div class="price-grid">
+              <label>Egg <span>FLOWER</span><input type="number" id="eggPrice" step="0.0001" /></label>
+              <label>Feather <span>FLOWER</span><input type="number" id="featherPrice" step="0.0001" /></label>
+              <label>Corn <span>FLOWER</span><input type="number" id="cornPrice" step="0.0001" /></label>
+              <label>Wheat <span>FLOWER</span><input type="number" id="wheatPrice" step="0.0001" /></label>
+              <label>Barley <span>FLOWER</span><input type="number" id="barleyPrice" step="0.0001" /></label>
+            </div>
+            <div class="form-grid two top-gap">
+              <label>Taxa Desert (%)
+                <input type="number" id="desertTax" step="0.1" />
+              </label>
+              <label>Multiplicador VIP da taxa
+                <input type="number" id="vipTaxMultiplier" step="0.05" />
+              </label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-kicker">Gems & restock</div>
+            <h2>Custo operacional</h2>
+            <p class="helper">Use o pacote real que você compra. O site calcula custo por Gem e também separa Gems consumidas de caixa desembolsado.</p>
+            <div class="form-grid two">
+              <label>Gems do pacote
+                <input type="number" id="gemBundleQty" step="1" />
+              </label>
+              <label>Preço do pacote (FLOWER)
+                <input type="number" id="gemBundleFlower" step="0.01" />
+              </label>
+              <label>Gems por restock Betty
+                <input type="number" id="restockGemCost" step="1" />
+              </label>
+              <label>Coin value / 1.000 Coins (FLOWER)
+                <input type="number" id="coinValuePer1000" step="0.01" />
+              </label>
+            </div>
+            <div class="divider"></div>
+            <div class="card-kicker">VIP target</div>
+            <div class="form-grid two">
+              <label>Gems VIP
+                <input type="number" id="vipGemGoal" step="1" />
+              </label>
+              <label>Preço atual do VIP (FLOWER)
+                <input type="number" id="vipFlowerGoal" step="0.01" />
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        <section class="results-column">
+          <div class="card">
+            <div class="card-head">
+              <div><div class="card-kicker">Produção</div><h2>O que sai do galinheiro</h2></div>
+              <div class="status-chip" id="taxChip">Desert · 25%</div>
+            </div>
+            <div class="metric-grid four">
+              <div class="metric"><span>Eggs / dia</span><strong id="eggsDay">—</strong></div>
+              <div class="metric"><span>Feathers / dia</span><strong id="feathersDay">—</strong></div>
+              <div class="metric"><span>Receita bruta / dia</span><strong id="grossDay">—</strong></div>
+              <div class="metric accent"><span>Receita líquida / dia</span><strong id="netDay">—</strong></div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Período</th><th>Eggs</th><th>Feathers</th><th>FLOWER bruto</th><th>FLOWER líquido</th></tr></thead>
+                <tbody id="productionTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="comparison-grid">
+            <div class="card">
+              <div class="card-kicker">Rota A</div>
+              <h2>Comprar crops no P2P</h2>
+              <div class="route-profit" id="p2pProfit">—</div>
+              <div class="route-sub" id="p2pSubtitle">—</div>
+              <div class="mini-grid two" id="p2pStats"></div>
+            </div>
+            <div class="card highlighted">
+              <div class="card-kicker">Rota B</div>
+              <h2>Seeds + Coins + Restock</h2>
+              <div class="route-profit" id="seedProfit">—</div>
+              <div class="route-sub" id="seedSubtitle">—</div>
+              <div class="mini-grid two" id="seedStats"></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div><div class="card-kicker">Feeding engine</div><h2>Ração e eficiência</h2></div>
+              <button class="btn ghost small" id="compareHeartBtn">Comparar Heartwarming</button>
+            </div>
+            <div class="metric-grid four">
+              <div class="metric"><span>XP de carinho / ciclo</span><strong id="loveXp">—</strong></div>
+              <div class="metric"><span>Feed actions / Chicken</span><strong id="feedActions">—</strong></div>
+              <div class="metric"><span>Mixed Grain / Chicken</span><strong id="mixedPerChicken">—</strong></div>
+              <div class="metric accent"><span>Mixed Grain / dia</span><strong id="mixedPerDay">—</strong></div>
+            </div>
+            <div class="split-callout" id="heartwarmingCompare"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-kicker">Seeds & Warehouse</div>
+            <h2>Plano de abastecimento · 28 dias</h2>
+            <div class="restock-layout">
+              <div class="metric-stack">
+                <div><span>Yield por seed usado no cálculo</span><strong id="yieldPerSeed">—</strong></div>
+                <div><span>Seeds necessárias / crop</span><strong id="seedsNeeded">—</strong></div>
+                <div><span>Coins em seeds</span><strong id="seedCoins">—</strong></div>
+                <div><span>Restocks pagos mínimos</span><strong id="paidRestocks">—</strong></div>
+              </div>
+              <div class="stock-panel">
+                <div class="stock-row"><span>Corn stock</span><strong id="cornStock">—</strong></div>
+                <div class="stock-row"><span>Wheat stock</span><strong id="wheatStock">—</strong></div>
+                <div class="stock-row"><span>Barley stock</span><strong id="barleyStock">—</strong></div>
+                <div class="stock-row total"><span>Gems consumidas</span><strong id="gemsUsed">—</strong></div>
+                <div class="stock-row total"><span>FLOWER alocado às Gems</span><strong id="gemAllocatedCost">—</strong></div>
+                <div class="stock-row"><span>Pacotes inteiros a comprar</span><strong id="gemBundlesToBuy">—</strong></div>
+                <div class="stock-row"><span>FLOWER de caixa p/ pacotes</span><strong id="gemCashOutlay">—</strong></div>
+              </div>
+            </div>
+            <div class="warning" id="restockWarning">—</div>
+          </div>
+
+          <div class="card">
+            <div class="card-kicker">Lucro</div>
+            <h2>Fluxo de caixa x lucro econômico</h2>
+            <div class="profit-grid">
+              <div class="profit-card good">
+                <span>FLOWER cash profit · 28 dias</span>
+                <strong id="cashProfit28">—</strong>
+                <small>Venda líquida − FLOWER efetivamente alocado aos restocks.</small>
+              </div>
+              <div class="profit-card">
+                <span>Economic profit · 28 dias</span>
+                <strong id="economicProfit28">—</strong>
+                <small>Cash profit − valor econômico dos Coins informado por você.</small>
+              </div>
+              <div class="profit-card">
+                <span>Margem de valor agregado</span>
+                <strong id="opportunityProfit28">—</strong>
+                <small>Compara alimentar as Chickens versus vender os crops no Desert.</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div><div class="card-kicker">Capacidade</div><h2>Plots necessários</h2></div>
+              <label class="inline-field">Plots disponíveis <input type="number" id="plotsAvailable" min="1" step="1" /></label>
+            </div>
+            <div class="plot-visual">
+              <div class="plot-number" id="plotsNeeded">—</div>
+              <div class="plot-copy"><strong id="plotStatus">—</strong><span id="plotDetail">—</span></div>
+            </div>
+          </div>
+
+          <details class="card formulas-card">
+            <summary>Ver fórmulas e premissas</summary>
+            <div id="formulaText" class="formula-text"></div>
+          </details>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <span>Galinha SF VIP · calculadora local, sem login.</span>
+      <span>Preços manuais por enquanto · pronto para GitHub Pages.</span>
+    </footer>
+  </div>
+
+  <script>
+const STORAGE_KEY = "galinha-sf-vip:v1";
+
+const defaults = {
+  chickens: 10,
+  chickenLevel: 15,
+  cyclesPerDay: 1,
+  lovesPerCycle: 2,
+  warehouse: true,
+  laurieCollectible: false,
+  laurieSkill: true,
+  efficientFeeding: true,
+  chonky: true,
+  heartwarming: false,
+  abundant: true,
+  fineFibers: true,
+  vip: false,
+  eggPrice: 0.0209,
+  featherPrice: 0.0055,
+  cornPrice: 0.0111,
+  wheatPrice: 0.0187,
+  barleyPrice: 0.0200,
+  desertTax: 25,
+  vipTaxMultiplier: 0.5,
+  gemBundleQty: 75,
+  gemBundleFlower: 4.82,
+  restockGemCost: 15,
+  coinValuePer1000: 0,
+  vipGemGoal: 1500,
+  vipFlowerGoal: 72.39,
+  plotsAvailable: 48,
+};
+
+const ids = Object.keys(defaults).filter(k => k !== "vip");
+const $ = id => document.getElementById(id);
+
+const levelDrops = {
+  1:[1,0],2:[1,0],3:[1,1],4:[2,1],5:[2,1],6:[2,1],7:[2,1],8:[3,1],9:[3,2],10:[3,2],11:[3,2],12:[3,2],13:[4,2],14:[4,2],15:[5,3]
+};
+
+const levelThresholds = {1:60,2:120,3:240,4:360,5:480,6:660,7:840,8:1020,9:1200,10:1440,11:1680,12:1920,13:2160,14:2400,15:2720};
+const priorThresholds = {1:0,2:60,3:120,4:240,5:360,6:480,7:660,8:840,9:1020,10:1200,11:1440,12:1680,13:1920,14:2160,15:2400};
+
+function loadState(){
+  try { return {...defaults, ...(JSON.parse(localStorage.getItem(STORAGE_KEY)) || {})}; }
+  catch { return {...defaults}; }
+}
+let state = loadState();
+
+function fmt(n, d=2){
+  if(!Number.isFinite(n)) return "—";
+  return n.toLocaleString("pt-BR", {minimumFractionDigits:d, maximumFractionDigits:d});
+}
+function fmtFlower(n,d=3){ return `${fmt(n,d)} FLOWER`; }
+function fmtInt(n){ return Math.round(n).toLocaleString("pt-BR"); }
+function signClass(n){ return n >= 0 ? "positive" : "negative"; }
+
+function readInputs(){
+  for(const key of ids){
+    const el = $(key);
+    if(!el) continue;
+    if(el.type === "checkbox") state[key] = el.checked;
+    else state[key] = Number(el.value);
+  }
+  state.vip = $("vipToggle").checked;
+}
+
+function writeInputs(){
+  for(const key of ids){
+    const el = $(key);
+    if(!el) continue;
+    if(el.type === "checkbox") el.checked = !!state[key];
+    else el.value = state[key];
+  }
+  $("vipToggle").checked = !!state.vip;
+}
+
+function getTaxRate(s=state){
+  const base = s.desertTax / 100;
+  return s.vip ? base * s.vipTaxMultiplier : base;
+}
+
+function getOutputPerChicken(s=state){
+  const level = Math.max(1, Math.min(15, Math.round(s.chickenLevel)));
+  const [baseEgg, baseFeather] = levelDrops[level] || [0,0];
+  return {
+    egg: baseEgg + (s.abundant ? 0.2 : 0),
+    feather: baseFeather + (s.fineFibers ? 0.1 : 0)
+  };
+}
+
+function expectedLoveXpPerLove(level=15){
+  const weights = {
+    1:[10,0,0],2:[8,2,0],3:[7,3,0],4:[6,3,1],5:[5,4,1],6:[5,3,2],7:[4,4,2],8:[4,3,3],9:[3,4,3],10:[3,3,4],11:[2,4,4],12:[2,3,5],13:[1,4,5],14:[1,3,6],15:[1,2,7]
+  }[level] || [1,2,7];
+  const total = weights.reduce((a,b)=>a+b,0);
+  return (weights[0]*25 + weights[1]*40 + weights[2]*50) / total;
+}
+
+function getFeedModel(s=state){
+  const level = Math.max(1, Math.min(15, Math.round(s.chickenLevel)));
+  const cycleXp = level === 15 ? (levelThresholds[15] - priorThresholds[15]) : Math.max(1, levelThresholds[level] - priorThresholds[level]);
+  const favoriteBaseXp = level <= 9 ? 60 : 80;
+  const feedXpMultiplier = s.chonky ? 2 : 1;
+  const feedQtyMultiplier = (s.efficientFeeding ? 0.95 : 1) * (s.chonky ? 1.5 : 1);
+  const loveMult = s.heartwarming ? 1.5 : 1;
+  const loveXp = expectedLoveXpPerLove(level) * s.lovesPerCycle * loveMult;
+  const foodXp = favoriteBaseXp * feedXpMultiplier;
+  const expectedActions = Math.max(0, (cycleXp - loveXp) / foodXp);
+  const mixedUnits = expectedActions * feedQtyMultiplier;
+  return {cycleXp, favoriteBaseXp, foodXpMultiplier, foodXp, feedQtyMultiplier, loveXp, expectedActions, mixedUnits};
+}
+
+function getYieldPerSeed(s=state){
+  // Laurie base +0.2 plus Laurie's Gains R1 +0.1, but only when the collectible is actually placed and the crop plot is inside its AOE.
+  return (s.laurieCollectible && s.laurieSkill) ? 1.3 : (s.laurieCollectible ? 1.2 : 1.0);
+}
+
+function getSeedStock(s=state){
+  const m = s.warehouse ? 1.2 : 1;
+  return {
+    corn: Math.ceil(100*m), wheat: Math.ceil(80*m), barley: Math.ceil(60*m)
+  };
+}
+
+function calcRestocks(seedsNeeded, stock){
+  const restocksFor = x => Math.max(0, Math.ceil(seedsNeeded / x) - 1);
+  const detail = {
+    corn: restocksFor(stock.corn),
+    wheat: restocksFor(stock.wheat),
+    barley: restocksFor(stock.barley)
+  };
+  return {detail, paid: Math.max(detail.corn, detail.wheat, detail.barley)};
+}
+
+function calcScenario(s=state, days=28){
+  const tax = getTaxRate(s);
+  const out = getOutputPerChicken(s);
+  const feed = getFeedModel(s);
+  const chickens = s.chickens;
+  const cycles = s.cyclesPerDay;
+
+  const eggsDay = out.egg * chickens * cycles;
+  const feathersDay = out.feather * chickens * cycles;
+  const grossDay = eggsDay*s.eggPrice + feathersDay*s.featherPrice;
+  const netDay = grossDay * (1-tax);
+  const mixedDay = feed.mixedUnits * chickens * cycles;
+  const mixedPeriod = mixedDay * days;
+
+  const p2pUnitCost = s.cornPrice+s.wheatPrice+s.barleyPrice;
+  const p2pFeedCost = mixedPeriod*p2pUnitCost;
+  const p2pProfit = netDay*days - p2pFeedCost;
+
+  const yieldPerSeed = getYieldPerSeed(s);
+  const seedsNeeded = Math.ceil(mixedPeriod / yieldPerSeed);
+  const coinCost = seedsNeeded*(7+5+10);
+  const stock = getSeedStock(s);
+  const restocks = calcRestocks(seedsNeeded, stock);
+  const gemsUsed = restocks.paid*s.restockGemCost;
+  const gemPerFlower = s.gemBundleQty / s.gemBundleFlower;
+  const flowerPerGem = gemPerFlower > 0 ? 1/gemPerFlower : 0;
+  const gemAllocatedCost = gemsUsed*flowerPerGem;
+  const bundlesToBuy = s.gemBundleQty > 0 ? Math.ceil(gemsUsed/s.gemBundleQty) : 0;
+  const gemCashOutlay = bundlesToBuy*s.gemBundleFlower;
+
+  const cashProfit = netDay*days - gemAllocatedCost;
+  const coinEconomicCost = coinCost/1000*s.coinValuePer1000;
+  const economicProfit = cashProfit - coinEconomicCost;
+
+  const cropOpportunityNet = mixedPeriod*p2pUnitCost*(1-tax);
+  const opportunityProfit = netDay*days - gemAllocatedCost - cropOpportunityNet;
+
+  // Plot-hours: Corn 20h + Wheat 24h + Barley 48h, Green Thumb R1 assumed in profile = x0.95.
+  // Laurie affects yield, not base time in this simplified first version.
+  const totalPlotHoursPerSeedSet = (20+24+48)*0.95;
+  const seedSetsPerDay = (mixedDay / yieldPerSeed);
+  const plotEquivalents = seedSetsPerDay*totalPlotHoursPerSeedSet/24;
+
+  return {tax,out,feed,eggsDay,feathersDay,grossDay,netDay,mixedDay,mixedPeriod,p2pUnitCost,p2pFeedCost,p2pProfit,yieldPerSeed,seedsNeeded,coinCost,stock,restocks,gemsUsed,flowerPerGem,gemAllocatedCost,bundlesToBuy,gemCashOutlay,cashProfit,coinEconomicCost,economicProfit,cropOpportunityNet,opportunityProfit,plotEquivalents,days};
+}
+
+function renderMiniGrid(el, items){
+  el.innerHTML = items.map(([label,value,cls=""])=>`<div><span>${label}</span><strong class="${cls}">${value}</strong></div>`).join("");
+}
+
+function render(){
+  const r28 = calcScenario(state,28);
+  const r7 = calcScenario(state,7);
+  const r93 = calcScenario(state,93);
+  const out = r28.out;
+
+  $("heroCashProfit").textContent = fmtFlower(r28.cashProfit,2);
+  $("heroCashProfit").className = signClass(r28.cashProfit);
+  $("heroEconomicProfit").textContent = fmtFlower(r28.economicProfit,2);
+  $("heroEconomicProfit").className = signClass(r28.economicProfit);
+  renderMiniGrid($("heroMiniGrid"),[
+    ["Receita líquida / 28d",fmtFlower(r28.netDay*28,2)],
+    ["Mixed Grain / dia",fmt(r28.mixedDay,2)],
+    ["Restocks mínimos / 28d",fmtInt(r28.restocks.paid)],
+    ["Coins / 28d",fmtInt(r28.coinCost)]
+  ]);
+
+  $("taxChip").textContent = `Desert · ${fmt(r28.tax*100,1)}%${state.vip?" · VIP":""}`;
+  $("eggsDay").textContent = fmt(r28.eggsDay,1);
+  $("feathersDay").textContent = fmt(r28.feathersDay,1);
+  $("grossDay").textContent = fmtFlower(r28.grossDay,3);
+  $("netDay").textContent = fmtFlower(r28.netDay,3);
+
+  const periods=[1,7,28,93];
+  $("productionTable").innerHTML = periods.map(days=>{
+    const r=calcScenario(state,days);
+    return `<tr><td>${days} ${days===1?"dia":"dias"}</td><td>${fmt(r.eggsDay*days,1)}</td><td>${fmt(r.feathersDay*days,1)}</td><td>${fmt(r.grossDay*days,3)}</td><td>${fmt(r.netDay*days,3)}</td></tr>`;
+  }).join("");
+
+  $("p2pProfit").textContent = fmtFlower(r28.p2pProfit,2);
+  $("p2pProfit").className = `route-profit ${signClass(r28.p2pProfit)}`;
+  $("p2pSubtitle").textContent = `Lucro após comprar todo Corn + Wheat + Barley no P2P por 28 dias.`;
+  renderMiniGrid($("p2pStats"),[
+    ["Custo do feed",fmtFlower(r28.p2pFeedCost,2)],
+    ["Custo / Mixed Grain",fmtFlower(r28.p2pUnitCost,4)]
+  ]);
+
+  $("seedProfit").textContent = fmtFlower(r28.cashProfit,2);
+  $("seedProfit").className = `route-profit ${signClass(r28.cashProfit)}`;
+  $("seedSubtitle").textContent = `FLOWER cash profit usando Seeds + Coins + restock Betty.`;
+  renderMiniGrid($("seedStats"),[
+    ["Restock FLOWER alocado",fmtFlower(r28.gemAllocatedCost,2)],
+    ["Coins gastos",fmtInt(r28.coinCost)]
+  ]);
+
+  $("loveXp").textContent = fmt(r28.feed.loveXp,1);
+  $("feedActions").textContent = fmt(r28.feed.expectedActions,3);
+  $("mixedPerChicken").textContent = fmt(r28.feed.mixedUnits,3);
+  $("mixedPerDay").textContent = fmt(r28.mixedDay,2);
+
+  const altState={...state,heartwarming:!state.heartwarming};
+  const alt=calcScenario(altState,28);
+  const diffMixed = alt.mixedPeriod-r28.mixedPeriod;
+  const diffCash = alt.cashProfit-r28.cashProfit;
+  $("heartwarmingCompare").innerHTML = state.heartwarming
+    ? `Sem Heartwarming, o consumo projetado iria para <strong>${fmt(alt.mixedDay,2)} Mixed Grain/dia</strong> e o cash profit mudaria em <strong class="${signClass(diffCash)}">${fmtFlower(diffCash,2)}</strong> por 28 dias.`
+    : `Com Heartwarming R1, o consumo projetado cai para <strong>${fmt(alt.mixedDay,2)} Mixed Grain/dia</strong> (${fmt(Math.abs(diffMixed),1)} a menos em 28 dias) e o cash profit muda em <strong class="${signClass(diffCash)}">+${fmtFlower(diffCash,2)}</strong>.`;
+
+  $("yieldPerSeed").textContent = fmt(r28.yieldPerSeed,2);
+  $("seedsNeeded").textContent = `${fmtInt(r28.seedsNeeded)} de cada`;
+  $("seedCoins").textContent = `${fmtInt(r28.coinCost)} Coins`;
+  $("paidRestocks").textContent = fmtInt(r28.restocks.paid);
+  $("cornStock").textContent = fmtInt(r28.stock.corn);
+  $("wheatStock").textContent = fmtInt(r28.stock.wheat);
+  $("barleyStock").textContent = fmtInt(r28.stock.barley);
+  $("gemsUsed").textContent = `${fmtInt(r28.gemsUsed)} Gems`;
+  $("gemAllocatedCost").textContent = fmtFlower(r28.gemAllocatedCost,3);
+  $("gemBundlesToBuy").textContent = fmtInt(r28.bundlesToBuy);
+  $("gemCashOutlay").textContent = fmtFlower(r28.gemCashOutlay,2);
+
+  const barleyCapacity=(r28.restocks.paid+1)*r28.stock.barley*r28.yieldPerSeed;
+  const buffer=barleyCapacity-r28.mixedPeriod;
+  $("restockWarning").innerHTML = buffer>=0
+    ? `Com o stock inicial + ${r28.restocks.paid} restock(s), a capacidade teórica de Barley cobre <strong>${fmt(barleyCapacity,1)} Mixed Grain</strong>. Margem aproximada: <strong>${fmt(buffer,1)}</strong>. Lembre: restock restaura até o limite; não “soma” stock acima do máximo.`
+    : `Atenção: faltariam aproximadamente <strong>${fmt(Math.abs(buffer),1)}</strong> Mixed Grain de capacidade. Você precisaria de mais restock ou complementar no P2P.`;
+
+  $("cashProfit28").textContent = fmtFlower(r28.cashProfit,2);
+  $("cashProfit28").className = signClass(r28.cashProfit);
+  $("economicProfit28").textContent = fmtFlower(r28.economicProfit,2);
+  $("economicProfit28").className = signClass(r28.economicProfit);
+  $("opportunityProfit28").textContent = fmtFlower(r28.opportunityProfit,2);
+  $("opportunityProfit28").className = signClass(r28.opportunityProfit);
+
+  $("plotsNeeded").textContent = fmt(r28.plotEquivalents,1);
+  const diffPlots=state.plotsAvailable-r28.plotEquivalents;
+  $("plotStatus").textContent = diffPlots>=0 ? "Capacidade sustentável" : "Capacidade insuficiente";
+  $("plotStatus").className = diffPlots>=0 ? "positive" : "negative";
+  $("plotDetail").textContent = diffPlots>=0 ? `Sobra equivalente a ${fmt(diffPlots,1)} plots contínuos.` : `Faltam aproximadamente ${fmt(Math.abs(diffPlots),1)} plots-equivalentes contínuos.`;
+
+  const dailyCash = Math.max(0, r28.cashProfit/28);
+  const daysToVip = dailyCash>0 ? state.vipFlowerGoal/dailyCash : Infinity;
+  $("vipGoalText").textContent = `${fmtInt(state.vipGemGoal)} Gems = ${fmtFlower(state.vipFlowerGoal,2)}`;
+  $("vipDays").textContent = Number.isFinite(daysToVip) ? `~${Math.ceil(daysToVip)} dias` : "sem payback";
+  const progress=Math.max(0,Math.min(100,(r28.cashProfit/state.vipFlowerGoal)*100));
+  $("vipProgressBar").style.width=`${progress}%`;
+  $("vipProjection").textContent = `${fmt(progress,1)}% da meta gerados a cada 28 dias neste cenário.`;
+  $("vipCallout").innerHTML = Number.isFinite(daysToVip)
+    ? `Em 93 dias, o galinheiro projeta <strong>${fmtFlower(r93.cashProfit,2)}</strong> de cash profit. Meta atual do VIP: <strong>${fmtFlower(state.vipFlowerGoal,2)}</strong>.`
+    : `Com os preços e custos atuais, a operação não gera cash profit positivo suficiente para financiar o VIP.`;
+
+  $("formulaText").innerHTML = `
+    <p><strong>Produção:</strong> usa o drop do nível informado, somando +0,2 Egg com Abundant Harvest R1 e +0,1 Feather com Fine Fibers R1.</p>
+    <p><strong>Taxa:</strong> receita líquida = receita bruta × (1 − taxa). Com VIP ligado, a taxa Desert é multiplicada por <code>${state.vipTaxMultiplier}</code>.</p>
+    <p><strong>Chicken Lv15:</strong> ciclo de XP = 2720 − 2400 = <code>320 XP</code>. Mixed Grain favorito = <code>80 XP</code>; com Chonky R1 = <code>160 XP</code>.</p>
+    <p><strong>Carinho Lv15:</strong> valor esperado por carinho = <code>45,5 XP</code>. Heartwarming R1 multiplica esse XP por <code>1,5×</code>.</p>
+    <p><strong>Quantidade de feed:</strong> base 1 × Efficient Feeding (${state.efficientFeeding?"0,95":"1,00"}) × Chonky (${state.chonky?"1,50":"1,00"}).</p>
+    <p><strong>Seeds:</strong> yield usado = <code>${fmt(r28.yieldPerSeed,2)}</code>. Laurie só entra se o collectible estiver colocado; Laurie's Gains R1 eleva o bônus total de +0,2 para +0,3 dentro do AOE. Com Warehouse, stock = 120 Corn / 96 Wheat / 72 Barley. Betty restock custa ${fmtInt(state.restockGemCost)} Gems e restaura o stock até o limite.</p>
+    <p><strong>Cash profit:</strong> venda líquida − custo FLOWER alocado às Gems consumidas. <strong>Economic profit:</strong> cash profit − valor dos Coins segundo o campo “Coin value / 1.000 Coins”.</p>
+    <p><strong>Plots:</strong> aproximação usando 20h Corn + 24h Wheat + 48h Barley e Green Thumb R1 (×0,95), dividido pelo yield por seed.</p>
+  `;
+}
+
+function bind(){
+  document.querySelectorAll("input,select").forEach(el=>{
+    el.addEventListener("input",()=>{readInputs();render();});
+    el.addEventListener("change",()=>{readInputs();render();});
+  });
+  $("saveBtn").addEventListener("click",()=>{
+    readInputs(); localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+    $("saveBtn").textContent="Salvo ✓"; setTimeout(()=>$("saveBtn").textContent="Salvar no navegador",1000);
+  });
+  $("resetBtn").addEventListener("click",()=>{
+    state={...defaults}; writeInputs(); render(); localStorage.removeItem(STORAGE_KEY);
+  });
+  $("compareHeartBtn").addEventListener("click",()=>{
+    state.heartwarming=!state.heartwarming; $("heartwarming").checked=state.heartwarming; render();
+  });
+  document.querySelectorAll("[data-preset]").forEach(btn=>btn.addEventListener("click",()=>{
+    document.querySelectorAll("[data-preset]").forEach(x=>x.classList.remove("active")); btn.classList.add("active");
+    if(btn.dataset.preset==="actual"){ state.chickens=5; state.chickenLevel=15; }
+    else { state.chickens=10; state.chickenLevel=15; }
+    writeInputs(); render();
+  }));
+}
+
+writeInputs(); bind(); render();
+
+</script>
+</body>
+</html>
