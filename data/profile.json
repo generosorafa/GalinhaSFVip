@@ -1,0 +1,447 @@
+{
+  "id": "5782272679195539",
+  "snapshotAt": 1794945687958,
+  "island": "desert",
+  "xp": 2670224.036750001,
+  "coins": 13498.08999999996,
+  "flower": 12.156484,
+  "gems": 1270,
+  "vipExpires": 1799284185331,
+  "skills": {
+    "Feller's Discount": 1,
+    "Forge-Ward Profits": 1,
+    "Frugal Miner": 1,
+    "Iron Bumpkin": 1,
+    "Lumberjack's Extra": 1,
+    "Rock'N'Roll": 1,
+    "Tree Charge": 1,
+    "Chonky Scarecrow": 1,
+    "Green Thumb": 1,
+    "Reel Deal": 1,
+    "Young Farmer": 1,
+    "Fishy Roll": 1,
+    "Betty's Friend": 1,
+    "Fruity Profit": 1,
+    "Bountiful Bounties": 1,
+    "More Axes": 1,
+    "Fishy Fortune": 1,
+    "Munching Mastery": 2,
+    "Nom Nom": 1,
+    "Fast Feasts": 1,
+    "Wormy Treat": 1,
+    "Blooming Boost": 1,
+    "Fine Fibers": 1,
+    "Loyal Macaw": 1,
+    "Efficient Feeding": 1,
+    "Tough Tree": 2,
+    "Efficient Bin": 1,
+    "Turbo Charged": 1,
+    "Laurie's Gains": 1,
+    "Restless Animals": 1,
+    "Bale Economy": 1,
+    "Double Bale": 1,
+    "Abundant Harvest": 1,
+    "Fire Kissed": 1,
+    "Chonky Feed": 1,
+    "Heartwarming Instruments": 1,
+    "Clucky Grazing": 1,
+    "Wide Rakes": 1,
+    "Old Farmer": 1,
+    "Instant Growth": 1,
+    "Acre Farm": 1
+  },
+  "activeCollectibles": [
+    "Basic Scarecrow",
+    "Big Orange",
+    "Scary Mike",
+    "Laurie the Chuckle Crow",
+    "Big Apple",
+    "Big Banana",
+    "Mushroom Log",
+    "Farmer's Monument",
+    "Basic Bed",
+    "Rug",
+    "Wardrobe",
+    "Lampshade",
+    "Basic Bear",
+    "Farmer Bear",
+    "Construction Bear",
+    "Brilliant Bear",
+    "Potted Pumpkin",
+    "Yellow Paint Bucket",
+    "Green Paint Bucket",
+    "Stone Beetle",
+    "Iron Beetle",
+    "Bale",
+    "Flamingo Chicken",
+    "Macaw",
+    "Immortal Pear",
+    "Desert Gnome",
+    "Blossombeard",
+    "Squirrel",
+    "Butterfly",
+    "Anemone Flower",
+    "Sunflorian Faction Banner",
+    "Salt Lamp",
+    "Marble Head",
+    "Ripped Salt Bag",
+    "Badass Bear",
+    "Salt Sculpture",
+    "Salt Crystal Flower",
+    "Ascended Wheel",
+    "Ascension Age Banner",
+    "Fat Chicken",
+    "Mangrove",
+    "Floral Bed",
+    "Zombie Hand Toy",
+    "Lual Crow",
+    "Giant Orange",
+    "Cave Dwellers Banner",
+    "TNT",
+    "Chef Bear"
+  ],
+  "wearables": [
+    "Farm Background",
+    "Pirate Potion",
+    "Basic Hair",
+    "Slime Splattered Shirt",
+    "Duende Pants",
+    "Duende Shoes",
+    "Sunflower Rod",
+    "Turd Topper",
+    "Pig Onesie",
+    "Forest Background",
+    "Beige Farmer Potion",
+    "Buzz Cut",
+    "Yellow Boots",
+    "Axe",
+    "Angler Waders",
+    "Swamp Lily Hat",
+    "Striped Blue Shirt",
+    "Salt Bottle Onesie"
+  ],
+  "inventory": {
+    "Egg": 6,
+    "Feather": 39.5,
+    "Corn": 183.95,
+    "Wheat": 83.95,
+    "Barley": 232,
+    "Wood": 117.7,
+    "Stone": 3.5,
+    "Iron": 9,
+    "Gold": 2,
+    "Crimstone": 18,
+    "Salt": 486,
+    "Kernel Blend": 19.85625,
+    "Hay": 28.45,
+    "NutriBarley": 22.25,
+    "Mixed Grain": 318.383125,
+    "Axe": 1534,
+    "Pickaxe": 26,
+    "Stone Pickaxe": 8,
+    "Iron Pickaxe": 0,
+    "Gold Pickaxe": 0,
+    "Salt Rake": 645,
+    "Gem": 1270,
+    "Corn Seed": 167,
+    "Wheat Seed": 175,
+    "Barley Seed": 133
+  },
+  "stock": {
+    "Pickaxe": 60,
+    "Stone Pickaxe": 20,
+    "Iron Pickaxe": 5,
+    "Gold Pickaxe": 1
+  },
+  "birds": [
+    {
+      "id": "25189828",
+      "experience": 18911.5,
+      "claimedExperience": 18720,
+      "state": "idle",
+      "item": "Brush",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949367388
+    },
+    {
+      "id": "233c2a7c",
+      "experience": 21124,
+      "claimedExperience": 20960,
+      "state": "idle",
+      "item": "Music Box",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949369988
+    },
+    {
+      "id": "aa5903dd",
+      "experience": 20596.5,
+      "claimedExperience": 20320,
+      "state": "idle",
+      "item": "Music Box",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949367921
+    },
+    {
+      "id": "d2f87844",
+      "experience": 20509,
+      "claimedExperience": 20320,
+      "state": "idle",
+      "item": "Music Box",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949367656
+    },
+    {
+      "id": "9b7c092d",
+      "experience": 18916.5,
+      "claimedExperience": 18720,
+      "state": "idle",
+      "item": "Music Box",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949369721
+    },
+    {
+      "id": "ef304245",
+      "experience": 18931.5,
+      "claimedExperience": 18720,
+      "state": "idle",
+      "item": "Music Box",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949368169
+    },
+    {
+      "id": "ba7dd730",
+      "experience": 19291.5,
+      "claimedExperience": 19040,
+      "state": "idle",
+      "item": "Brush",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949365787
+    },
+    {
+      "id": "f0a5b62a",
+      "experience": 19201.5,
+      "claimedExperience": 19040,
+      "state": "idle",
+      "item": "Music Box",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949365506
+    },
+    {
+      "id": "5e5a63cb",
+      "experience": 17722,
+      "claimedExperience": 17440,
+      "state": "idle",
+      "item": "Music Box",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949366037
+    },
+    {
+      "id": "47c2dc13",
+      "experience": 17656.5,
+      "claimedExperience": 17440,
+      "state": "idle",
+      "item": "Music Box",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949365236
+    },
+    {
+      "id": "b3f50780",
+      "experience": 499.5,
+      "claimedExperience": 360,
+      "state": "ready",
+      "item": "Brush",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949368554
+    },
+    {
+      "id": "958daa19",
+      "experience": 499.5,
+      "claimedExperience": 360,
+      "state": "ready",
+      "item": "Petting Hand",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949366360
+    },
+    {
+      "id": "57b07886",
+      "experience": 499.5,
+      "claimedExperience": 360,
+      "state": "ready",
+      "item": "Petting Hand",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949367156
+    },
+    {
+      "id": "d4278f0c",
+      "experience": 544.5,
+      "claimedExperience": 360,
+      "state": "ready",
+      "item": "Brush",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949369453
+    },
+    {
+      "id": "3eaba4e0",
+      "experience": 537,
+      "claimedExperience": 360,
+      "state": "ready",
+      "item": "Brush",
+      "lovesThisSleep": 2,
+      "awakeAt": 1794949365023
+    }
+  ],
+  "henLevel": 2,
+  "trees": [
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    },
+    {
+      "tier": 1,
+      "multiplier": 1,
+      "recoveryMs": 6480000
+    }
+  ],
+  "crimstones": [
+    {
+      "minesLeft": 5,
+      "minedAt": 1794927440989,
+      "recoveryMs": 86400000
+    },
+    {
+      "minesLeft": 5,
+      "minedAt": 1794927439888,
+      "recoveryMs": 86400000
+    },
+    {
+      "minesLeft": 5,
+      "minedAt": 1794927440442,
+      "recoveryMs": 86400000
+    }
+  ],
+  "saltNodes": {
+    "0": {
+      "createdAt": 1782216410956,
+      "salt": {
+        "storedCharges": 0,
+        "nextChargeAt": 1794950388508,
+        "claimedAt": 1794927500078
+      }
+    },
+    "1": {
+      "createdAt": 1790254555225,
+      "salt": {
+        "storedCharges": 0,
+        "nextChargeAt": 1794950394818,
+        "claimedAt": 1794927499809
+      }
+    },
+    "2": {
+      "createdAt": 1792042315896,
+      "salt": {
+        "storedCharges": 0,
+        "nextChargeAt": 1794950389648,
+        "claimedAt": 1794927500366
+      }
+    },
+    "3": {
+      "createdAt": 1792042315896,
+      "salt": {
+        "storedCharges": 0,
+        "nextChargeAt": 1794950394337,
+        "claimedAt": 1794927500577
+      }
+    }
+  },
+  "saltLevel": 3,
+  "sculptureLevel": 4,
+  "plots": 54,
+  "shipmentsAt": 1794879083931,
+  "hasWarehouse": true
+}
