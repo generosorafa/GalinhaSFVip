@@ -1,0 +1,1 @@
+{"name":"sunflower-finance","version":"3.0.0","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.mjs","start":"node scripts/serve.mjs"},"dependencies":{"decimal.js":"10.6.0"},"devDependencies":{"@phosphor-icons/core":"^2.1.1"}}
